@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+
+  <title>Spring Boot Exemple</title>
+
+  <!--/*/ <th:block th:include="fragments/headerinc :: head"></th:block> /*/-->
+</head>
+<body>
+<div class="container">
+  <!--/*/ <th:block th:include="fragments/header :: header"></th:block> /*/-->
+  <div th:if="${not #lists.isEmpty(peliculas)}">
+    <h2>Product List</h2>
+    <table class="table table-striped">
+      <tr>
+        <th>Id</th>
+        <th>titulo</th>
+        <th>fecha</th>
+        <th>hora</th>
+        <th>categoria</th>
+        <th>sinopsis</th>
+        <th>View</th>
+        <th>Edit</th>
+        <th>Delete</th>
+      </tr>
+      <tr th:each="pelicula : ${peliculas}">
+        <td th:text="${pelicula.id}">Id</td>
+        <td th:text="${pelicula.titulo}">titulo</td>
+        <td th:text="${pelicula.fecha}">fecha</td>
+        <td th:text="${pelicula.hora}">hora</td>
+        <td th:text="${pelicula.categoria}">categoria</td>
+        <td th:text="${pelicula.sinopsis}">sinopsis</td>
+        <td><a th:href="${ '/peliculas/' +     pelicula.id}">View</a></td>
+      </tr>
+    </table>
+
+  </div>
+</div>
+
+</body>
+</html>
