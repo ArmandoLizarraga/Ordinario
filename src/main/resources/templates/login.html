@@ -1,28 +1,113 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head>
-	<link rel="icon" href="data:,">
-  <meta charset="UTF-8">
-  <title>Login Form</title>
+    <link rel="icon" href="data:,">
+    <meta charset="UTF-8">
+    <title>Login Form</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background-color: #fff;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+            width: 400px;
+        }
+
+        .wrapper {
+            text-align: center;
+            padding: 20px;
+        }
+
+        h2 {
+            color: #333;
+            text-align: center;
+        }
+
+        .title {
+            font-size: 32px;
+            margin-bottom: 20px;
+            color: #007BFF;
+        }
+
+        form {
+            display: grid;
+            grid-gap: 15px;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .error-message {
+            color: #ff0000;
+            margin-bottom: 10px;
+        }
+
+        .row {
+            display: flex;
+            justify-content: center;
+        }
+
+        input {
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 16px;
+            width: 100%;
+            box-sizing: border-box;
+            transition: border-color 0.3s ease-in-out;
+        }
+
+        input:focus {
+            border-color: #007BFF;
+        }
+
+        .button {
+            margin-top: 15px;
+        }
+
+        input[type="submit"] {
+            background-color: #007BFF;
+            color: #fff;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
 </head>
+
 <body>
-<h2>Iniciar Sesión</h2>
-<div class="container">
-  <div class="wrapper">
-    <div class="title"><span>Login Form</span></div>
-    <form th:action="@{/login}" th:object="${loginForm}" method="POST">
-      <div th:if="${error}" class="error-message">
-        Error: <span th:text="${error}"></span>
-      </div>
-      <div class="row">
-        <input type="text" name="username">
-      </div>
-      <div class="row">
-        <input type="password" name="password">
-      </div>
-      <div class="row button">
-        <input type="submit" name="Login">
-      </div>
-    </form>
-  </div>
-</div>
+    <div class="container">
+        <div class="wrapper">
+            <div class="title"><span>Login Form</span></div>
+            <form th:action="@{/login}" th:object="${loginForm}" method="POST">
+                <div th:if="${error}" class="error-message">
+                    Error: <span th:text="${error}"></span>
+                </div>
+                <div class="row">
+                    <input type="text" name="username" placeholder="Username">
+                </div>
+                <div class="row">
+                    <input type="password" name="password" placeholder="Password">
+                </div>
+                <div class="row button">
+                    <input type="submit" value="Login">
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>
